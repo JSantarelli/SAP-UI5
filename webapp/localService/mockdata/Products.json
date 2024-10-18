@@ -1,0 +1,10 @@
+{
+    "Products": [
+      { "ProductID": "1", "ProductName": "Apple", "Price": 1.2 },
+      { "ProductID": "2", "ProductName": "Banana", "Price": 0.5 },
+      { "ProductID": "3", "ProductName": "Orange", "Price": 0.8 },
+      { "ProductID": "4", "ProductName": "Grapes", "Price": 2.0 },
+      { "ProductID": "5", "ProductName": "Mango", "Price": 1.5 }
+    ]
+  }
+  
