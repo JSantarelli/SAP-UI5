@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "author": "SAP SE",
+  "type": "module",
+  
   "scripts": {
     "start": "ui5 serve",
-    "build": "ui5 build"
+    "build": "ui5 build",
+    "lint": "eslint ."
   },
   "devDependencies": {
-    "@ui5/cli": "^4"
+    "@ui5/cli": "^4",
+    "eslint": "^9.18.0",
+    "eslint-plugin-html": "^8.1.2",
+    "eslint-plugin-ui5": "^0.1.0"
   }
 }
