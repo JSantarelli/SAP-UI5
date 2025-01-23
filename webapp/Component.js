@@ -1,40 +1,49 @@
-sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], function (UIComponent, Device, models) {
+sap.ui.define([
+	"sap/ui/core/UIComponent",
+	"sap/ui/model/json/JSONModel",
+	"sap/f/library",
+	"sap/f/FlexibleColumnLayoutSemanticHelper"
+], function (UIComponent, JSONModel, library, FlexibleColumnLayoutSemanticHelper) {
 	"use strict";
 
-	return UIComponent.extend("com.sapui5.Component", {
+	var LayoutType = library.LayoutType;
+
+	var Component = UIComponent.extend("sap.f.ShellBarWithFlexibleColumnLayout.Component", {
 		metadata: {
 			manifest: "json"
 		},
+
 		init: function () {
-			// call the base component's init function
-			UIComponent.prototype.init.call(this); // create the views based on the url/hash
+			UIComponent.prototype.init.apply(this, arguments);
 
-			// create the device model
-			this.setModel(models.createDeviceModel(), "device");
+			var oModel = new JSONModel();
+			this.setModel(oModel);
 
-			// create the views based on the url/hash
+			// set products demo model on this sample
+			var oProductsModel = new JSONModel(sap.ui.require.toUrl("sap/ui/demo/mock/cuentas.json"));
+			oProductsModel.setSizeLimit(1000);
+			this.setModel(oProductsModel, "products");
+
+
 			this.getRouter().initialize();
 		},
+
 		/**
-		 * This method can be called to determine whether the sapUiSizeCompact or sapUiSizeCozy
-		 * design mode class should be set, which influences the size appearance of some controls.
-		 * @public
-		 * @returns {string} css class, either 'sapUiSizeCompact' or 'sapUiSizeCozy' - or an empty string if no css class should be set
+		 * Returns an instance of the semantic helper
+		 * @returns {sap.f.FlexibleColumnLayoutSemanticHelper} An instance of the semantic helper
 		 */
-		getContentDensityClass: function () {
-			if (this.contentDensityClass === undefined) {
-				// check whether FLP has already set the content density class; do nothing in this case
-				if (document.body.classList.contains("sapUiSizeCozy") || document.body.classList.contains("sapUiSizeCompact")) {
-					this.contentDensityClass = "";
-				} else if (!Device.support.touch) {
-					// apply "compact" mode if touch is not supported
-					this.contentDensityClass = "sapUiSizeCompact";
-				} else {
-					// "cozy" in case of touch support; default for most sap.m controls, but needed for desktop-first controls like sap.ui.table.Table
-					this.contentDensityClass = "sapUiSizeCozy";
-				}
-			}
-			return this.contentDensityClass;
+		getHelper: function () {
+			var oFCL = this.getRootControl().byId("fcl"),
+				oParams = new URLSearchParams(window.location.search),
+				oSettings = {
+					defaultTwoColumnLayoutType: LayoutType.TwoColumnsMidExpanded,
+					defaultThreeColumnLayoutType: LayoutType.ThreeColumnsMidExpanded,
+					initialColumnsCount: oParams.get("initial"),
+					maxColumnsCount: oParams.get("max")
+				};
+
+			return FlexibleColumnLayoutSemanticHelper.getInstanceFor(oFCL, oSettings);
 		}
 	});
+	return Component;
 });
