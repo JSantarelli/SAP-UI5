@@ -78,10 +78,7 @@
 						</headerToolbar>
 						<columns>
 							<Column width="12em">
-								<Text text="Propiedad" />
-							</Column>
-							<Column	hAlign="End">
-								<Text text="Monto" />
+								<Text text="Propiedades" />
 							</Column>
 						</columns>
 						<items>

@@ -26,14 +26,13 @@
 				height="100%"
 				>
 				<m:FlexBox class="kpi__container" height="100%" justifyContent="SpaceBetween" direction="Column">
-					<m:Title text="Pago con QR" class="sidepanel__subtitle" level="H2" titleStyle="H3"/>
+										
+					<m:MessageStrip
+					text="{products>/facturacion/descripcion}"
+					type="Warning"
+					showIcon="true"
+					showCloseButton="false" />
 
-					<m:VBox justifyContent="Center" class="kpi__container">
-						<m:Image src="./assets/img/qr-code.jpg" width="75%" />
-						<m:Link text="Seleccionar otro medio de pago" press="handleAboutPress" />
-					</m:VBox>
-					
-					
 					<m:VBox justifyContent="Center">
 						<m:Label text="Importe Total"/>
 						<m:Title text="{products>/facturacion/importeTotalSaldo}" class="sidepanel__subtitle" level="H2" titleStyle="H3"/>
@@ -49,7 +48,6 @@
 						<m:Text text="{products>XBLNR}"/>
 					</m:VBox>
 
-
 					<m:Title text="Datos de Cuenta" class="sidepanel__subtitle" level="H2" titleStyle="H3"/>
 
 					<m:VBox justifyContent="Center">
@@ -57,12 +55,11 @@
 						<m:Text text="{products>/perfil/ID}"/>
 					</m:VBox>
 
-					<m:MessageStrip
-					text="{products>/facturacion/descripcion}"
-					type="Warning"
-					showIcon="true"
-					showCloseButton="false" />
-
+					<m:VBox justifyContent="Center" class="kpi__container">
+						<m:Title text="Pago con QR" class="sidepanel__subtitle" level="H2" titleStyle="H3"/>
+						<m:Image src="./assets/img/qr-code.jpg" width="75%" />
+						<m:Link text="Seleccionar otro medio de pago" press="handleAboutPress" />
+					</m:VBox>
 				</m:FlexBox>
 			</m:Panel>
 		</content>

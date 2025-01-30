@@ -16,11 +16,11 @@
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
 				<m:VBox class="kpi__container">
-					<m:MessageStrip
+					<!-- <m:MessageStrip
 					text="No presenta deuda"
 					type="Success"
 					showIcon="true"
-					showCloseButton="false" />
+					showCloseButton="false" /> -->
 					<m:Title text="{products>ALIAS_CONT}" wrapping="true" class="sapUiSmallMarginEnd"/>
 				</m:VBox>
 				</expandedHeading>
@@ -41,7 +41,19 @@
 				<actions>
 					<m:Button
 							text="Gestionar propiedad"
-							type="Transparent"
+							type="Default"
+							press="toggleAreaPriority"/>
+					<m:Button
+							text="Pago parcial"
+							type="Neutral"
+							press="toggleAreaPriority"/>
+					<m:Button
+							text="Pagar con facilidades"
+							type="Ghost"
+							press="toggleAreaPriority"/>	
+					<m:Button
+							text="Pagar"
+							type="Emphasized"
 							press="toggleAreaPriority"/>
 				</actions>
 			</ObjectPageDynamicHeaderTitle>
@@ -66,12 +78,12 @@
 					<m:VBox justifyContent="End" alignItems="End" class="sapUiSmallMarginEnd">
 						<m:Label text="Cuánto debo pagar?"/>
 						<m:Text class="kpi__count kpi__count--primary" text="{products>/facturacion/importeTotalSaldo}"/>
-						<m:ObjectStatus text="Primary Text" icon="sap-icon://information" />
+						<m:ObjectStatus text="Primer vencimiento: {products>/facturacion/pagos/0/values/0/FECHA_VENC}" icon="sap-icon://information" state="Information" />
 					</m:VBox>
 					<m:VBox justifyContent="End" alignItems="End" class="sapUiSmallMarginEnd">
 						<m:Label text="Cuánto adeudo?"/>
 						<m:Text text="{products>/facturacion/importeDeudaOriginal}" class="kpi__count kpi__count--tertiary"/>
-						<m:ObjectStatus text="Primary Text" icon="sap-icon://information" />
+						<m:ObjectStatus text="Primer vencimiento: {products>/facturacion/pagos/0/values/0/FECHA_VENC}" icon="sap-icon://information" state="Information" />
 					</m:VBox>
 				</m:HBox>
 			</m:FlexBox>

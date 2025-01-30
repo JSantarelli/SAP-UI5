@@ -17,13 +17,11 @@ sap.ui.define([
 
       var sLayout = oEvent.getParameters().arguments.layout;
 
-      // If there is no layout parameter, query for the default level 0 layout (normally OneColumn)
       if (!sLayout) {
         var oNextUIState = this.getOwnerComponent().getHelper().getNextUIState(0);
         sLayout = oNextUIState.layout;
       }
 
-      // Update the layout of the FlexibleColumnLayout
       if (sLayout) {
         oModel.setProperty("/layout", sLayout);
       }
@@ -35,7 +33,6 @@ sap.ui.define([
 
       this._updateUIElements();
 
-      // Save the current route name
       this.currentRouteName = sRouteName;
       this.currentProduct = oArguments.product;
       this.currentSupplier = oArguments.supplier;
@@ -47,13 +44,10 @@ sap.ui.define([
 
       this._updateUIElements();
 
-      // Replace the URL with the new layout if a navigation arrow was used
       if (bIsNavigationArrow) {
         this.oRouter.navTo(this.currentRouteName, {layout: sLayout, product: this.currentProduct, supplier: this.currentSupplier}, true);
       }
     },
-
-    // Update the close/fullscreen buttons visibility
     _updateUIElements: function () {
       var oModel = this.getOwnerComponent().getModel();
       var oUIState = this.getOwnerComponent().getHelper().getCurrentUIState();

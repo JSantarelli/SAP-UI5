@@ -25,23 +25,23 @@ sap.ui.define([
       this.oRouter.navTo("detail", {layout: oNextUIState.layout, product: product});
     },
     onSearchMenu: function (oEvent) {
-      // Get the search query
+      
       const sQuery = oEvent.getParameter("query");
-      const oList = this.byId("menuList"); // Get the menu List
-      const oBinding = oList.getBinding("items"); // Get the binding for the items
+      const oList = this.byId("menuList"); 
+      const oBinding = oList.getBinding("items"); 
 			
-      // Create a filter for the 'item' property in nested options
+      
       const oFilter = new sap.ui.model.Filter({
         path: "options",
         test: function (aOptions) {
-          // Return true if any of the nested options match the search query
+          
           return aOptions.some((oOption) => 
             oOption.item.toLowerCase().includes(sQuery.toLowerCase())
           );
         }
       });
 		
-      // Apply the filter
+      
       oBinding.filter(sQuery ? [oFilter] : []);
     },
     onSearch: function (oEvent) {
