@@ -16,11 +16,6 @@
 			<ObjectPageDynamicHeaderTitle>
 				<expandedHeading>
 				<m:VBox class="kpi__container">
-					<!-- <m:MessageStrip
-					text="No presenta deuda"
-					type="Success"
-					showIcon="true"
-					showCloseButton="false" /> -->
 					<m:Title text="{products>ALIAS_CONT}" wrapping="true" class="sapUiSmallMarginEnd"/>
 				</m:VBox>
 				</expandedHeading>
@@ -78,12 +73,12 @@
 					<m:VBox justifyContent="End" alignItems="End" class="sapUiSmallMarginEnd">
 						<m:Label text="Cuánto debo pagar?"/>
 						<m:Text class="kpi__count kpi__count--primary" text="{products>/facturacion/importeTotalSaldo}"/>
-						<m:ObjectStatus text="Primer vencimiento: {products>/facturacion/pagos/0/values/0/FECHA_VENC}" icon="sap-icon://information" state="Information" />
+						<m:ObjectStatus text="Primer vencimiento: {products>/facturacion/pagos/0/values/0/FECHA_VENC}" icon="sap-icon://information" state="None" />
 					</m:VBox>
 					<m:VBox justifyContent="End" alignItems="End" class="sapUiSmallMarginEnd">
 						<m:Label text="Cuánto adeudo?"/>
 						<m:Text text="{products>/facturacion/importeDeudaOriginal}" class="kpi__count kpi__count--tertiary"/>
-						<m:ObjectStatus text="Primer vencimiento: {products>/facturacion/pagos/0/values/0/FECHA_VENC}" icon="sap-icon://information" state="Information" />
+						<m:ObjectStatus text="Primer vencimiento: {products>/facturacion/pagos/0/values/0/FECHA_VENC}" icon="sap-icon://information" state="None" />
 					</m:VBox>
 				</m:HBox>
 			</m:FlexBox>
@@ -93,7 +88,7 @@
 			<ObjectPageSection id="section1" title="Mis Pagos">
 				<subSections>
 					<ObjectPageSubSection>
-						<blocks>
+						<blocks>	
 							<m:Table
 								id="pagosTable"
 								mode="SingleSelectMaster"

@@ -4,7 +4,6 @@
 	  xmlns:mvc="sap.ui.core.mvc">
 	<f:DynamicPage id="dynamicPageId"
 				   toggleHeaderOnTitleClick="false">
-		<!-- DynamicPage Title -->
 			<f:title>
 				<f:DynamicPageTitle>
 					<f:heading>
@@ -19,19 +18,6 @@
 					<f:snappedTitleOnMobile>
 						<Title text="{products>/perfil/TIPO_DOC}: {products>/perfil/NRO_DOC}"/>
 					</f:snappedTitleOnMobile>
-					<!-- <f:content>
-						<OverflowToolbar>
-							<GenericTag text="SR"
-								status="Error"
-								press="onPressOpenPopover"
-								design="StatusIconHidden">
-								<ObjectNumber number="2"
-									unit="M"
-									emphasized="false"
-									state="Error"/>
-							</GenericTag>
-						</OverflowToolbar>
-					</f:content> -->
 					<f:actions>
 						<Button
 								text="Acción contextual"
